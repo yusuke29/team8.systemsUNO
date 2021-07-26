@@ -21,6 +21,7 @@
                     <tr><th>コース</th><td>{{$items[0]->Course}}</td></tr>
                     <tr><th>入試対象年度</th><td>{{$items[0]->TargetAge}}</td></tr>
                     <tr><th>合否点数</th><td>{{$items[0]->ItemSub}}</td></tr>
+                    <tr><th>合否承認</th><td>@if($items[0]->approval!=0)〇@else-@endif</td></tr>
                     
                 </table>
             </div>

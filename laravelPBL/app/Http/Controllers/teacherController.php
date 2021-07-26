@@ -29,7 +29,7 @@ class teacherController extends Controller{
 
         if(Request::get('details')){
             $E_No=Request::get('details');
-            $items=DB::select('select p.Name,i.Entrant,p.EntrantNo,p.Age,p.Bdate,p.School,p.Scyear,i.Entry,p.Entrant,i.Course,i.TargetAge,pa.ItemSub from participant p,participantinfo i,passfail pa where p.EntrantNo=i.EntrantNo AND pa.EntrantNo=i.EntrantNo AND pa.EntrantNo=p.EntrantNo AND p.EntrantNo=:E_No',array('E_No' => $E_No));
+            $items=DB::select('select p.Name,i.Entrant,p.EntrantNo,p.Age,p.Bdate,p.School,p.Scyear,i.Entry,p.Entrant,i.Course,i.TargetAge,pa.ItemSub,pa.approval from participant p,participantinfo i,passfail pa where p.EntrantNo=i.EntrantNo AND pa.EntrantNo=i.EntrantNo AND pa.EntrantNo=p.EntrantNo AND p.EntrantNo=:E_No',array('E_No' => $E_No));
            $memo_text=DB::select('select memo from participantinfo where EntrantNo=:E_No',array('E_No' => $E_No));
            return view('teacher.A005',['items'=>$items],['memo'=>$memo_text]);
         }
