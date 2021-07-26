@@ -40,8 +40,9 @@ $('#csv').click(function(){
 })
 
 $('body').on('click', '#finish', function() {
-    $('.remove').remove();
-    control_flag=true;
+    var td = $('.remove');
+    var state = td.css('display');
+    td.css('display', 'none');
   });
 
   $('body').on('click', '#all', function() {
@@ -50,12 +51,17 @@ $('body').on('click', '#finish', function() {
 
 
 $('#approval').click(function(){
-    if(control_flag){
-        $('<th class=\'remove\'>承認</th>').prependTo('.th');
-        $('<td class=\'remove\'><input type=\'checkbox\' class=\'approval_check\'></td>').prependTo('.td');
-        $('#search').after('<div class=\'remove\'><div class=\'add_button\'><button>承認</button></div><div class=\'add_button\'><button id=\'all\'>全て選択</button></div><div class=\'add_button\'><button id="finish">終了</button></div></div>');
-        control_flag=false;
+
+    var td = $('.remove');
+    var state = td.css('display');
+    if(state === 'block') {
+        td.css('display', 'none');
     }
+    else {
+        td.css('display', 'block');
+    }
+
+
 });
 
 
@@ -108,3 +114,4 @@ function getData(){
     });
 return dd;
 }
+

@@ -16,10 +16,6 @@
                     <tr><th>生年月日</th><td>{{$items[0]->Bdate}}</td></tr>
                     <tr><th>学校</th><td>{{$items[0]->School}}</td></tr>
                     <tr><th>学年</th><td>{{$items[0]->Scyear}}</td></tr>
-                    <tr><th>メールアドレス</th><td>{{$items[0]->Email}}</td></tr>
-                    <tr><th>住所</th><td>{{$items[0]->Addr}}</td></tr>
-                    <tr><th>郵便番号</th><td>{{$items[0]->Post}}</td></tr>
-                    <tr><th>電話番号</th><td>{{$items[0]->Tel}}</td></tr>
                     <tr><th>参加学科</th><td>{{$items[0]->Entry}}</td></tr>
                     <tr><th>参加回数</th><td>{{$items[0]->Entrant}}</td></tr>
                     <tr><th>コース</th><td>{{$items[0]->Course}}</td></tr>

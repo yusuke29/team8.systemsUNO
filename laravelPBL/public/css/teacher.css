@@ -246,11 +246,11 @@ h1{
 	border: 1px solid #a8b7c5;
 	margin: 1em 1%;
   }
-  #search>input{
+  #search>form>input{
 	  margin-left: 10px;
 	  margin-top: 15px;
   }
-  #search>select{
+  #search>form>select{
 	margin-left: 10px;
 	margin-top: 15px;
 	margin-bottom: 10px;
@@ -259,4 +259,7 @@ h1{
 	display: inline-block;
 	  margin-left: 10px;
 	  margin-top: 10px;
+  }
+  .remove{
+	  display: none;
   }
