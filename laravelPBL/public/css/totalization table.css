@@ -1,0 +1,29 @@
+.btn-border {
+    position: relative; /* 今の位置を基準 */
+    top: 450px; /* 上から10px */
+    left: 920px; /* 左から20px */
+    right: 0px;
+    bottom: 0px;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    border: 2px solid #000000;
+    font-size: 18px;
+    color: #000000;
+    background-color: #4b83c3;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: .4s;
+}
+
+.btn-border:hover {
+    background-color: #afeeee;
+    border-color: #ffffff;
+    color: #FFF;
+}
+
+.flex div {
+    width: 3em; 
+}

@@ -9,6 +9,12 @@ use Log;
 
 class teacherController extends Controller{
 
+    public function A001(){
+        return view('teacher.A001');
+    }
+    public function A002(){
+        return view('teacher.A002');
+    }
     public function A003(){
         $year[0]=date('Y', strtotime('+1 year'));
         $year[1]=date('Y', strtotime('+2 year'));
@@ -106,6 +112,9 @@ class teacherController extends Controller{
             DB::update('update passfail set approval="1" where EntrantNo = :id',$param);
         }
         return redirect('/A003');
+    }
+    public function A004(){
+        return view('teacher.A004');
     }
     public function A005(){
         return view('teacher.A005');

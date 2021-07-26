@@ -88,11 +88,12 @@ class partiController extends Controller{
         $Entrant = date('Ymd');
 
         $a = $request->Scyear;
+
         if($a === "高校１年生"){
             $TargetAge = date('Y', strtotime('+2 year'));
         }elseif($a === "高校２年生"){
             $TargetAge = date('Y', strtotime('+1 year'));
-        }elseif($a === "高校３年生" || $parti['Scyear'] === "既卒"){
+        }elseif($a === "高校３年生" || $a === "既卒"){
             $TargetAge = date('Y');
         }
 
@@ -107,14 +108,19 @@ class partiController extends Controller{
 
         $parm = [
                     'EntrantNo' => $EntrantNo,
-                    'Entry'=>$request->Entry,
-                    'Course'=>$request->Course,
+                    'Entry'=> $request->Entry,
+                    'Course'=> $request->Course,
                     'Entrant' => $Entrant,
                     'TargetAge' => $TargetAge
                 ];
         
+        $pass = [
+                    'EntrantNo' => $EntrantNo,
+                    'Entrant' => $Entrant,
+                ];
         DB::insert('insert into participant (Name,EntrantNo,School,Department,Scyear,Entrant) values (:Name,:EntrantNo,:School,:Department,:Scyear,:Entrant)', $parti);
         DB::insert('insert into participantinfo (EntrantNo,Entrant,Entry,Course,TargetAge) values (:EntrantNo,:Entrant,:Entry,:Course,:TargetAge)',$parm);
+        DB::insert('insert into passfail (EntrantNo,Entrant) values (:EntrantNo,:Entrant)',$pass);
         return view('participant.A014',['count'=>$count]);
     }
 

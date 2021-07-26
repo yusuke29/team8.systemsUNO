@@ -17,9 +17,12 @@ Route::post('/A013_1', [partiController::class, 'A013_1']);
 Route::get('/A014', [partiController::class, 'A014']);
 
 //先生側PC画面
+Route::get('/A001', [teacherController::class, 'A001']);
+Route::get('/A002', [teacherController::class, 'A002']);
 Route::get('/A003', [teacherController::class, 'A003']);
 Route::post('/A003', [teacherController::class, 'A003_post']);
 Route::post('/A003/add', [teacherController::class, 'A003_add_post']);
+Route::get('/A004', [teacherController::class, 'A004']);
 Route::get('/A005', [teacherController::class, 'A005']);
 Route::post('/A005', [teacherController::class, 'A005_post']);
 Route::get('/A006', [teacherController::class, 'A006']);

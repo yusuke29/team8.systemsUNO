@@ -1,0 +1,87 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+/*参加者一覧*/
+.btn-border1 {
+  position: relative; /* 今の位置を基準 */
+  top: 190px; 
+  left: 340px; 
+  right: 0px;
+  bottom: 0px;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  border: 2px solid #4bb5c3;
+  font-size: 24px;
+  color: #4bc3bd;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 16px 32px;
+  border-radius: 4px;
+  transition: .4s;
+}
+/*集計表*/
+.btn-border2 {
+  position: relative; /* 今の位置を基準 */
+  top: 280px; 
+  left: 340px; 
+  right: 0px;
+  bottom: 0px;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  border: 2px solid #4bb5c3;
+  font-size: 24px;
+  color: #4bc3bd;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 16px 32px;
+  border-radius: 4px;
+  transition: .4s;
+}
+/*ログアウト*/
+.btn-border3 {
+  position: relative; /* 今の位置を基準 */
+  top: -50px; 
+  left: 950px; 
+  display: inline-block;
+  width: 20%;
+  text-align: center;
+  border: 2px solid #4bb5c3;
+  font-size: 14px;
+  color: #4bc3bd;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 1px 2px;
+  border-radius: 1px;
+  transition: .4s;
+}
+
+.btn-border1:hover {
+  background-color: #afeeee;
+  border-color: #fffaf0;
+  color: #FFF;
+}
+
+.btn-border2:hover {
+  background-color: #afeeee;
+  border-color: #fffaf0;
+  color: #FFF;
+}
+
+.btn-border3:hover {
+  background-color: #afeeee;
+  border-color: #fffaf0;
+  color: #FFF;
+}
+
+.flex {
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.flex div {
+  width: 35em; /*幅*/
+}
