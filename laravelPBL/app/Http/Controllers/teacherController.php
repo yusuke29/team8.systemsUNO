@@ -29,7 +29,7 @@ class teacherController extends Controller{
 
         if(Request::get('details')){
             $E_No=Request::get('details');
-            $items=DB::select('select p.Name,i.Entrant,p.EntrantNo,p.Age,p.Bdate,p.School,p.Scyear,i.Entry,p.Entrant,i.Course,i.TargetAge,pa.ItemSub,pa.approval from participant p,participantinfo i,passfail pa where p.EntrantNo=i.EntrantNo AND pa.EntrantNo=i.EntrantNo AND pa.EntrantNo=p.EntrantNo AND p.EntrantNo=:E_No',array('E_No' => $E_No));
+            $items=DB::select('select p.Name,i.Entrant,p.EntrantNo,p.Age,p.Bdate,p.School,p.Scyear,i.Entry,i.Count,i.Course,i.TargetAge,pa.ItemSub,pa.approval from participant p,participantinfo i,passfail pa where p.EntrantNo=i.EntrantNo AND pa.EntrantNo=i.EntrantNo AND pa.EntrantNo=p.EntrantNo AND p.EntrantNo=:E_No',array('E_No' => $E_No));
            $memo_text=DB::select('select memo from participantinfo where EntrantNo=:E_No',array('E_No' => $E_No));
            return view('teacher.A005',['items'=>$items],['memo'=>$memo_text]);
         }
@@ -41,6 +41,7 @@ class teacherController extends Controller{
             return view('teacher.A006',['items'=>$items],['pass'=>$pass_memo]);
         }  
         else{
+            $items;
             if(Request::get('check1')){
                 $name_search=Request::get('name_search');
                 $data_set[$count]=$name_search;
@@ -74,25 +75,25 @@ class teacherController extends Controller{
             if(Request::get('check4')){
                 $class_search=Request::get('class_search');
                 $data_set[$count]=$class_search;
-                $num_s[$count]=3;
+                $num_s[$count]=4;
                 $count++;
             }
             if(Request::get('check5')){
                 $en_search=Request::get('count_search');
                 $data_set[$count]=$en_search;
-                $num_s[$count]=4;
+                $num_s[$count]=5;
                 $count++;
             }
             if(Request::get('check6')){
                 $tg_search=Request::get('tg_search');
                 $data_set[$count]=$tg_search;
-                $num_s[$count]=5;
+                $num_s[$count]=6;
                 $count++;
             }
             if(Request::get('check7')){
                 $sc_search=Request::get('sc_search');
                 $data_set[$count]=$sc_search;
-                $num_s[$count]=6;
+                $num_s[$count]=7;
                 $count++;
             }
             if($count>0){

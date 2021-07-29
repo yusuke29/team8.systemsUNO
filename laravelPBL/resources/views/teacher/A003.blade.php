@@ -22,14 +22,14 @@
             <input type="checkbox" name="check1">名前<input type="text" style="width:110px;" name="name_search">
             <input type="checkbox" name='check2'>参加者NO<input type="text" style="width:50px;" name="no_search">
             <input type="checkbox" name='check3'>参加日<input type="date" style="width:125px;" name="data_search_1">~<input type="date" style="width:125px;" name="data_search_2">
-            <input type="checkbox" name='check4'>参加学科<select name="class_search"><option></option><option>医療福祉学科</option><option>診療情報管理士学科</option><option>ホテル・ブライダル学科</option><option>経営アシスト学科</option><option>公務員学科</option>
+            <input type="checkbox" name='check4'>参加学科<select name="class_search"><option></option><option>医療福祉事務学科</option><option>診療情報管理士学科</option><option>ホテル・ブライダル学科</option><option>経営アシスト学科</option><option>公務員学科</option>
             <option>公務員速修学科</option><option>保育学科</option><option>情報スペシャリスト学科</option><option>情報システム学科</option><option>ゲームクリエイター学科</option><option>ゲームプログラマー学科</option>
             <option>データマーケター学科</option><option>CGデザイン学科</option><option>ネット・動画クリエイター学科</option></select>
             <input type="checkbox" name='check5'>参加回数<select name="count_search"><option></option><option>1回</option><option>2回</option><option>3回</option><option>3回以上</option></select><br>
             <input type="checkbox" name='check6'>入試対象年度<select name="tg_search"><option>{{$year[0]}}年</option><option>{{$year[1]}}年</option></select>
             <input type="checkbox" name='check7'>高校<input type="text" name="sc_search">
             <button href="A003" class="reset">リセット</button>
-            <button style="margin-left:1080px" type='submit' name='search' class="search">検索</button>
+            <button type='submit' name='search' class="search">検索</button>
           </form>
           </div>
           <div class='remove'><div class='add_button'><button id='all'>全て選択</button></div><div class='add_button'><button id="finish">終了</button></div></div>

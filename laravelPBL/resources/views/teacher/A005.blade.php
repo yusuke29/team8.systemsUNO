@@ -17,7 +17,7 @@
                     <tr><th>学校</th><td>{{$items[0]->School}}</td></tr>
                     <tr><th>学年</th><td>{{$items[0]->Scyear}}</td></tr>
                     <tr><th>参加学科</th><td>{{$items[0]->Entry}}</td></tr>
-                    <tr><th>参加回数</th><td>{{$items[0]->Entrant}}</td></tr>
+                    <tr><th>参加回数</th><td>{{$items[0]->Count}}</td></tr>
                     <tr><th>コース</th><td>{{$items[0]->Course}}</td></tr>
                     <tr><th>入試対象年度</th><td>{{$items[0]->TargetAge}}</td></tr>
                     <tr><th>合否点数</th><td>{{$items[0]->ItemSub}}</td></tr>
