@@ -8,7 +8,7 @@
         <div id="left_table">
             <div id="details_table">
                 <table border="1" id="details">
-               
+                @if($items!="")
                     <tr><th>氏名</th><td>{{$items[0]->Name}}</td></tr>
                     <tr><th>参加日</th><td>{{$items[0]->Entrant}}</td></tr>
                     <tr><th>参加者NO</th><td>{{$items[0]->EntrantNo}}</td></tr>
@@ -22,7 +22,7 @@
                     <tr><th>入試対象年度</th><td>{{$items[0]->TargetAge}}</td></tr>
                     <tr><th>合否点数</th><td>{{$items[0]->ItemSub}}</td></tr>
                     <tr><th>合否承認</th><td>@if($items[0]->approval!=0)〇@else-@endif</td></tr>
-                    
+                @endif
                 </table>
             </div>
             <form action="A005" method="POST">@csrf

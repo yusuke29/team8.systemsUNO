@@ -263,3 +263,13 @@ h1{
   .remove{
 	  display: none;
   }
+  .reset{
+	  position: absolute;
+	  top: 150px;
+	  left: 1380px;
+  }
+  .search{
+	position: absolute;
+	top: 150px;
+	left: 380px;
+  }

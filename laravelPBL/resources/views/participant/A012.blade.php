@@ -47,22 +47,10 @@
                 &thinsp;<input type="radio" name="Scyear" value="高校２年生">高校２年生<br>
                 &thinsp;<input type="radio" name="Scyear" value="高校１年生">高校１年生<br>
                 &thinsp;<input type="radio" name="Scyear" value="既卒">既卒<br>
-            ・以下の入力欄に貴校名を入力後、検索ボタンを<br>
-            　押して下の一覧から貴校名を選択して下さい。<br>
+            ・以下の入力欄に貴校名と学科を入力してさい。<br>
             <span class="note">※既卒の方も高校名を入力して下さい。</span><br>
-            <input type="text" style="width: 20%; padding: 10px; font-size:15px;">　
-            <button type="button" id="search">検索</button><br>
-            一覧<br>
-            <div style="padding: 10px; margin-bottom: 10px; margin-right: 900px;border: 1px solid #333333;">
-            <input type="radio" name="sc" ><br>
-            <input type="radio" name="sc"><br>
-            <input type="radio" name="sc"><br>
-            </div>
             高校名&thinsp;<input type="text" style="width: 20%; padding: 10px;" name="School"><br>
-
-
-            ・学科を入力して下さい<br>
-            学科　&thinsp;<input type="text" style="width: 20%; padding: 10px;" placeholder="例) 普通科" name="Department"></p>
+            <p>学科　&thinsp;<input type="text" style="width: 20%; padding: 10px;" placeholder="例) 普通科" name="Department"></p>
             <p><strong>4.今日はどちらから来られましたか？</strong>&emsp;<span class="mandatory">必須</span><br>
             <span class="note">※該当する地域を選択して下さい。</span><br>
             <span class="note">※&nbsp;*&nbsp;が付いている地域は交通費支給対象地域です</span><br>

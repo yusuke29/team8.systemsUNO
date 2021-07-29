@@ -64,34 +64,43 @@ class teacherController extends Controller{
                     $num_s[$count]=3;
                     $count++;
                 }
-                
+                else{
+                    $data_set[$count]=$data_search_1;
+                    $num_s[$count]=2;
+                    $count++;
+                }
                 
             }
             if(Request::get('check4')){
                 $class_search=Request::get('class_search');
                 $data_set[$count]=$class_search;
-                $num_s[$count]=4;
+                $num_s[$count]=3;
                 $count++;
             }
             if(Request::get('check5')){
                 $en_search=Request::get('count_search');
                 $data_set[$count]=$en_search;
-                $num_s[$count]=5;
+                $num_s[$count]=4;
                 $count++;
             }
             if(Request::get('check6')){
                 $tg_search=Request::get('tg_search');
                 $data_set[$count]=$tg_search;
-                $num_s[$count]=6;
+                $num_s[$count]=5;
                 $count++;
             }
             if(Request::get('check7')){
                 $sc_search=Request::get('sc_search');
                 $data_set[$count]=$sc_search;
-                $num_s[$count]=7;
+                $num_s[$count]=6;
                 $count++;
             }
-            $items=$this->set_s($data_set,$count,$num_s);
+            if($count>0){
+                $items=$this->set_s($data_set,$count,$num_s);
+            }
+            else{
+                $items = DB::select('select i.Entrant,p.EntrantNo,p.Name,p.School,p.Scyear,i.TargetAge,i.Count,i.Entry,i.Course from participant p,participantinfo i where p.EntrantNo=i.EntrantNo');
+            }
             
             $year[0]=date('Y', strtotime('+1 year'));
             $year[1]=date('Y', strtotime('+2 year'));
@@ -114,7 +123,38 @@ class teacherController extends Controller{
         return redirect('/A003');
     }
     public function A004(){
-        return view('teacher.A004');
+        $entry_sum=[];
+        $sum=0;
+        $index=0;
+        $index_2=0;
+        $entry_count=$this->set_count();      
+        for($i=0;$i<13;$i++){
+            $entry_sum[$index_2]=0;
+            for($j=0;$j<3;$j++){
+                $entry_sum[$index_2]+=$entry_count[$index];
+                $sum+=$entry_count[$index];
+                $index++;
+            }
+            $index_2++;
+        }
+        $index=0;
+        for($i=0;$i<3;$i++){
+            $entry_sum[$index_2]=0;
+            if($i===1){
+                $index=1;
+            }
+            else if($i===2){
+                $index=2;
+            }
+            for($j=0;$j<13;$j++){
+                $entry_sum[$index_2]+=$entry_count[$index];
+                $index+=3;
+            }
+            $index_2++;
+        }
+        $entry_sum[$index_2]=$sum;
+
+        return view('teacher.A004',['count'=>$entry_count],['sum'=>$entry_sum]);
     }
     public function A005(){
         return view('teacher.A005');
@@ -159,38 +199,13 @@ class teacherController extends Controller{
 
     public function set_s($ar,$n,$num_search){
         $item='select i.Entrant,p.EntrantNo,p.Name,p.School,p.Scyear,i.TargetAge,i.Count,i.Entry,i.Course from participant p,participantinfo i where p.EntrantNo=i.EntrantNo';
-        /*switch($n){
-            case 1:
-                switch($num_search[0]){
-                    case 0:$param =['name'=>$ar[0]];$item = DB::select('select i.Entrant,p.EntrantNo,p.Name,p.School,p.Scyear,i.TargetAge,i.Count,i.Entry,i.Course from participant p,participantinfo i where p.EntrantNo=i.EntrantNo AND (p.Name=:name',$param);break;
-                    case 1:$param =['number'=>$ar[0]];$item = DB::select('select i.Entrant,p.EntrantNo,p.Name,p.School,p.Scyear,i.TargetAge,i.Count,i.Entry,i.Course from participant p,participantinfo i where p.EntrantNo=i.EntrantNo AND (p.EntrantNo=:number',$param);break;
-                    case 2:$param =['date_1'=>$ar[0]];$item = DB::select('select i.Entrant,p.EntrantNo,p.Name,p.School,p.Scyear,i.TargetAge,i.Count,i.Entry,i.Course from participant p,participantinfo i where p.EntrantNo=i.EntrantNo AND (i.Entrant=:date_1',$param);break;
-                    case 4:$param =['class'=>$ar[0]];$item = DB::select('select i.Entrant,p.EntrantNo,p.Name,p.School,p.Scyear,i.TargetAge,i.Count,i.Entry,i.Course from participant p,participantinfo i where p.EntrantNo=i.EntrantNo AND (i.Entry=:class',$param);break;
-                    case 5:$param =['count'=>$ar[0]];$item = DB::select('select i.Entrant,p.EntrantNo,p.Name,p.School,p.Scyear,i.TargetAge,i.Count,i.Entry,i.Course from participant p,participantinfo i where p.EntrantNo=i.EntrantNo AND (i.Count=:count',$param);break;
-                    case 6:$param =['tg'=>$ar[0]];$item = DB::select('select i.Entrant,p.EntrantNo,p.Name,p.School,p.Scyear,i.TargetAge,i.Count,i.Entry,i.Course from participant p,participantinfo i where p.EntrantNo=i.EntrantNo AND (i.TargetAge=:tg',$param);break;
-                    case 7:$param =['sc'=>$ar[0]];$item = DB::select('select i.Entrant,p.EntrantNo,p.Name,p.School,p.Scyear,i.TargetAge,i.Count,i.Entry,i.Course from participant p,participantinfo i where p.EntrantNo=i.EntrantNo AND (p.School=:sc',$param);break;
-                } 
-                break;
-            case 2:
-                for($i=0;$i<$n;$i++){
-                    switch($num_search[$i]){
-                        case 0:$param =['name'=>$ar[$i]];$item = DB::select('select i.Entrant,p.EntrantNo,p.Name,p.School,p.Scyear,i.TargetAge,i.Count,i.Entry,i.Course from participant p,participantinfo i where p.EntrantNo=i.EntrantNo AND p.Name=:name',$param);break;
-                        case 1:$param =['number'=>$ar[$i]];$item = DB::select('select i.Entrant,p.EntrantNo,p.Name,p.School,p.Scyear,i.TargetAge,i.Count,i.Entry,i.Course from participant p,participantinfo i where p.EntrantNo=i.EntrantNo AND p.EntrantNo=:number',$param);break;
-                        case 2:$param =['date_1'=>$ar[$i]];$item = DB::select('select i.Entrant,p.EntrantNo,p.Name,p.School,p.Scyear,i.TargetAge,i.Count,i.Entry,i.Course from participant p,participantinfo i where p.EntrantNo=i.EntrantNo AND i.Entrant=:date_1',$param);break;
-                        case 4:$param =['class'=>$ar[$i]];$item = DB::select('select i.Entrant,p.EntrantNo,p.Name,p.School,p.Scyear,i.TargetAge,i.Count,i.Entry,i.Course from participant p,participantinfo i where p.EntrantNo=i.EntrantNo AND i.Entry=:class',$param);break;
-                        case 5:$param =['count'=>$ar[$i]];$item = DB::select('select i.Entrant,p.EntrantNo,p.Name,p.School,p.Scyear,i.TargetAge,i.Count,i.Entry,i.Course from participant p,participantinfo i where p.EntrantNo=i.EntrantNo AND i.Count=:count',$param);break;
-                        case 6:$param =['tg'=>$ar[$i]];$item = DB::select('select i.Entrant,p.EntrantNo,p.Name,p.School,p.Scyear,i.TargetAge,i.Count,i.Entry,i.Course from participant p,participantinfo i where p.EntrantNo=i.EntrantNo AND i.TargetAge=:tg',$param);break;
-                        case 7:$param =['sc'=>$ar[$i]];$item = DB::select('select i.Entrant,p.EntrantNo,p.Name,p.School,p.Scyear,i.TargetAge,i.Count,i.Entry,i.Course from participant p,participantinfo i where p.EntrantNo=i.EntrantNo AND p.School=:sc',$param);break;
-                    } 
-                }
-                break;
-        }*/
+
 $param=[];
         for($i=0;$i<$n;$i++){
             switch($num_search[$i]){
                 case 0:$param=$param+array('name'=>$ar[$i]);if($i!=0){$item=$item." OR p.Name=:name";}else{$item=$item." AND (p.Name=:name";}break;
                 case 1:$param =$param+array('number'=>$ar[$i]);if($i!=0){$item=$item." OR p.EntrantNo=:number";}else{$item=$item." AND (p.EntrantNo=:number";}break;
-                case 2:$param[$i] ="'date_1'=>"+$ar[$i];break;
+                case 2:$param =$param+array('date1'=>$ar[$i]);$i++;$param =$param+array('date2'=>$ar[$i]);if(($i-1)!=0){$item=$item." OR i.Entrant BETWEEN :date1 AND :date2";}else{$item=$item." AND ((i.Entrant BETWEEN :date1 AND :date2)";}break;
                 case 4:$param =$param+array('class'=>$ar[$i]);if($i!=0){$item=$item." OR i.Entry=:class";}else{$item=$item." AND (i.Entry=:class";}break;
                 case 5:$param =$param+array('count'=>$ar[$i]);if($i!=0){$item=$item." OR i.Count=:count";}else{$item=$item." AND (i.Count=:count";}break;
                 case 6:$param =$param+array('tg'=>$ar[$i]);if($i!=0){$item=$item." OR i.TargetAge=:tg";}else{$item=$item." AND (i.TargetAge=:tg";}break;
@@ -201,5 +216,42 @@ $param=[];
         $item = DB::select($item,$param);
         return $item;
     }
+    public function set_count(){
+        $entry_count=[];
+        $index_count=0;
+        $text="";
+        $today = date("Y-m-d");
+        $scyear=["高校１年生","高校２年生","高校３年生","既卒"];
+        $item='select i.Entrant,p.EntrantNo,p.Name,p.School,p.Scyear,i.TargetAge,i.Count,i.Entry,i.Course from participant p,participantinfo i where p.EntrantNo=i.EntrantNo AND (i.Entry=:class AND p.Scyear=';
+        $param=[];
+        $class=["情報スペシャリスト学科","情報システム学科","データマーケター学科","ネット・動画クリエイター学科","CGデザイン学科","ゲームクリエイター学科","ゲームプログラマー学科","経営アシスト学科","医療福祉事務学科","公務員学科","ホテル・ブライダル学科","診療情報管理士学科","保育学科"];
+        for($i=0;$i<13;$i++){
+            $param=$param+array('class'=>$class[$i]);
+            for($j=0;$j<3;$j++){
+                $param=[];
+                $t="scyear_".$j;
+                $param=$param+array($t=>$scyear[$j]);
+                $param=$param+array('class'=>$class[$i]);
+                $param=$param+array('today'=>$today);
+                $item='select i.Entrant,p.EntrantNo,p.Name,p.School,p.Scyear,i.TargetAge,i.Count,i.Entry,i.Course from participant p,participantinfo i where p.EntrantNo=i.EntrantNo AND (i.Entry=:class AND i.Entrant=:today AND (p.Scyear=:';
+                if($j>=2){
+                    $t_2="scyear_".($j+1);
+                    $param=$param+array($t_2=>$scyear[$j+1]);
+                    $text="scyear_".$j." OR p.Scyear=:scyear_".($j+1)."))";                    
+                }
+                else{
+                    $text="scyear_".$j."))"; 
+                }
+
+                $item=$item.$text;
+                $items=DB::select($item,$param);
+                $entry_count[$index_count]=count($items);
+                $index_count++;
+            }
+        }
+        return $entry_count;
+    }
 }
+
+
 

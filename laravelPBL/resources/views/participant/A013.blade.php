@@ -12,27 +12,27 @@
         <form action="A013_1" method="post">
         @csrf
             <p><strong>1.参加者名</strong><br>
-                <input type="text" class="text" name="Name" value="{{$Name}}"></p>
+                <input type="text" class="text" name="Name" value="{{$Name}}" readonly></p>
 
             <p><strong>2.参加学科</strong><br>
-                <input type="text" class="text" name="Entry" value="{{$Entry}}"></p>
+                <input type="text" class="text" name="Entry" value="{{$Entry}}" readonly></p>
 
             <p><strong>3.参加コース</strong><br>
-                <input type="text" class="text" name="Course" value="{{$Course}}"></p>
+                <input type="text" class="text" name="Course" value="{{$Course}}" readonly></p>
 
             <p><strong>4.学校情報</strong><br>
-                <input type="text" class="text" name="School" value="{{$School}}"><br></p>
-                <p><input type="text" class="text" name="Department" value="{{$Department}}"><br></p>
-                <p><input type="text" class="text" name="Scyear" value="{{$Scyear}}"></p>
+                <input type="text" class="text" name="School" value="{{$School}}" readonly><br></p>
+                <p><input type="text" class="text" name="Department" value="{{$Department}}" readonly><br></p>
+                <p><input type="text" class="text" name="Scyear" value="{{$Scyear}}" readonly></p>
 
             <p><strong>5.お住まいの地域</strong><br>
             @if($area != '')
-                <input type="text" class="text" name="area" value="{{$area}}"></p>
+                <input type="text" class="text" name="area" value="{{$area}}" readonly></p>
             @endif
             @if($area2 != '')
-                <input type="text" class="text" name="area2" value="{{$area2}}"></p>
+                <input type="text" class="text" name="area2" value="{{$area2}}" readonly></p>
                 @if($area3 != '')
-                    <p><input type="text" class="text" name="area3" value="{{$area3}}"></p>
+                    <p><input type="text" class="text" name="area3" value="{{$area3}}" readonly></p>
                     <!--交通費支給対象の場合-->
                     <div　id="target">
                         <p><span style="background-color: #e4e004;">

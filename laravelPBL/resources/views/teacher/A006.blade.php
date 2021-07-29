@@ -182,6 +182,11 @@
         </div>
         </div>
         <div class="bottom_button"><button type='submit' value='{{$items[0]->EntrantNo}}' name='A006'　class="button_1">登録</button></div></form>
+        <script>
+            $(".button_1").click(function(){
+                alert("a");
+            });
+        </script>
         <script src="../resources/js/teacher.js" ></script>
     </body>
 </html>
